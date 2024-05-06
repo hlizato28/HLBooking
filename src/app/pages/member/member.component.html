@@ -1,0 +1,67 @@
+  <!-- Add Button with PrimeNG -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div class="search-container">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
+      <input type="text" pInputText placeholder="Search" [(ngModel)]="searchTerm" (keyup)="onSearchInput()">
+    </div>
+  </div>
+</div>
+  
+  <!-- Table with PrimeNG -->
+  <div *ngIf="allMember && allMember.length > 0">
+    <p-table [value]="allMember">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Id</th>
+          <th>User Name</th>
+          <th>Email</th>
+          <th>Nama</th>
+          <th>No. HP</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-member>
+        <tr>
+          <td>{{ member.idUser }}</td>
+          <td>{{ member.userName }}</td>
+          <td>{{ member.email }}</td>
+          <td>{{ member.nama }}</td>
+          <td>+{{ member.noTelepon }}</td>
+          <td class="action-column">
+            <button pButton type="button" icon="pi pi-pencil" class="p-button-rounded" (click)="onEdit(member.idUser)"></button>
+            <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="confirmDelete(member.idUser)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <p-paginator [rows]="itemsPerPage" [totalRecords]="totalItems" (onPageChange)="onPageChanged($event)"></p-paginator>
+</div>
+<div *ngIf="!allMember || allMember.length === 0" style="text-align: center;">
+    <p style="font-size: 20px;">Data member belum ada.</p>
+</div>
+
+  <!-- Dialog for Editing Member -->
+  <p-dialog header="Edit Member" [(visible)]="displayEditModal">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="userName">User Name</label>
+        <input type="text" pInputText id="userName" [(ngModel)]="dataMember.username" readonly/>
+      </div>
+      <div class="p-field">
+        <label for="email">Email</label>
+        <input type="text" pInputText id="email" [(ngModel)]="dataMember.email" />
+      </div>
+      <div class="p-field">
+        <label for="nama">Nama</label>
+        <input type="text" pInputText id="nama" [(ngModel)]="dataMember.nama" />
+      </div>
+      <div class="p-field">
+        <label for="noTelepon">No. HP</label>
+        <input type="text" pInputText id="noTelepon" [(ngModel)]="dataMember.noTelepon" />
+      </div>
+      
+      
+      <button pButton type="button" label="Save" (click)="saveEdit()"></button>
+      <button pButton type="button" label="Cancel" (click)="displayEditModal=false" class="p-button-secondary"></button>
+    </div>
+  </p-dialog>

@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <p-card header="Login">
+        <div class="card-body">
+          <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" pInputText class="form-control" id="username" [(ngModel)]="user.username" name="username" #username="ngModel" required>
+              <div *ngIf="username.touched && username.errors?.['required']" class="text-danger">
+                Username required
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" pInputText class="form-control" id="password" [(ngModel)]="user.password" name="password" #password="ngModel" required>
+              <div *ngIf="password.touched && password.errors?.['required']" class="text-danger">
+                Password required
+              </div>
+            </div>
+            <button pButton type="submit" label="Login" class="p-button-raised p-button-success"></button>
+          </form>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</div>

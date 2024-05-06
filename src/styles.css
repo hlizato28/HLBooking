@@ -1,0 +1,176 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~primeng/resources/themes/saga-blue/theme.css";
+@import "~primeng/resources/primeng.min.css";
+@import "~primeicons/primeicons.css";
+@import "app/components/navbar/navbar.component.css";
+@import "app/components/side-menu/side-menu.component.css";
+
+/* styles.css */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.app-badge {
+  width: 200px;
+  margin: 0 10px;
+}
+
+.main-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.app-navbar {
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+}
+
+.content .titletable {
+  width: 100%;
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+}
+
+
+/* Style untuk tabel dan paginator */
+.p-datatable .p-datatable-tbody > tr > td {
+  border: 1px solid #dee2e6; /* Menambahkan border untuk setiap sel */
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  border: 1px solid #dee2e6; /* Menambahkan border untuk setiap header */
+}
+
+.p-datatable .action-column {
+  width: 120px;
+  text-align: center;
+}
+
+.p-datatable .booked-by .member {
+  margin-bottom: 20px;
+}
+
+/* Mengatur ukuran dan margin button */
+.p-datatable .p-button {
+  margin: 0 2px;
+}
+
+.p-datatable {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px; /* Menambahkan margin bawah untuk memberi ruang antara tabel dan paginator */
+}
+
+.p-paginator {
+  padding-top: 40px; /* Padding atas untuk paginator, menambah jarak antara tabel dan paginator */
+}
+
+/* Responsif untuk perangkat kecil */
+@media (max-width: 768px) {
+  .p-datatable .p-datatable-thead > tr > th,
+  .p-datatable .p-datatable-tbody > tr > td {
+    padding: 0.5rem; /* Mengurangi padding untuk layar kecil */
+    text-align: center; /* Teks di tengah */
+  }
+
+  .p-paginator {
+    font-size: 0.75rem; /* Mengurangi ukuran font pada paginator untuk layar kecil */
+  }
+}
+
+/* Style untuk menampilkan pesan ketika tidak ada data */
+.no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Membuat elemen ini mengambil tinggi penuh viewport */
+  font-size: 20px; /* Memperbesar font */
+  text-align: center; /* Teks di tengah */
+}
+
+/* Style umum untuk dialog */
+.p-dialog .p-fluid {
+padding: 20px; /* Padding di dalam dialog */
+background: #f4f4f4; /* Background warna untuk dialog */
+}
+
+/* Style untuk field dalam form */
+.p-dialog .p-field {
+margin-bottom: 15px; /* Jarak antar field */
+display: flex; /* Gunakan flexbox untuk alignment */
+align-items: center; /* Align items vertikal */
+}
+
+.p-dialog label {
+flex: 0 0 100px; /* Berikan lebar tetap untuk label */
+margin-right: 10px; /* Jarak antara label dan input */
+font-weight: bold; /* Menebalkan teks label */
+}
+
+.p-inputtext {
+flex: 1; /* Input text mengambil sisa ruang */
+padding: 8px; /* Padding dalam input text */
+border: 1px solid #ccc; /* Border untuk input */
+border-radius: 4px; /* Rounded corners untuk input */
+}
+
+/* Style untuk tombol */
+.p-dialog .p-button {
+margin-right: 10px; /* Jarak antar tombol */
+margin-top: 10px;
+}
+
+/* Responsif untuk perangkat kecil */
+@media (max-width: 600px) {
+.p-dialog .p-field {
+    flex-direction: column; /* Stack vertically in small screens */
+    align-items: flex-start; /* Align items to the start */
+}
+
+.p-dialog label {
+    margin-bottom: 5px; /* Space below the label */
+}
+
+.p-dialog .p-button {
+    width: 100%; /* Full width buttons */
+    margin-top: 10px; /* Space above the button */
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+
+
+
+
+
+
+}
+
+

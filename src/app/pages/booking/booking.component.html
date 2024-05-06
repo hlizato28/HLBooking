@@ -1,0 +1,73 @@
+<!-- Add Button with PrimeNG -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="search-container">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
+        <input type="text" pInputText placeholder="Search" [(ngModel)]="searchTerm" (keyup)="onSearchInput()">
+      </div>
+    </div>
+  </div>
+    
+    
+    <!-- Table with PrimeNG -->
+    <div *ngIf="allBooking && allBooking.length > 0">
+        <p-table [value]="allBooking">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Id</th>
+              <th>Lapangan</th>
+              <th>Tanggal</th>
+              <th>Jam</th>
+              <th>Booked By</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-booking>
+            <tr>
+              <td>{{ booking.idBooking }}</td>
+              <td>{{ booking.namaLapangan }}</td>
+              <td>{{ booking.tanggal  }}</td>
+              <td>{{ booking.jamMulaiBooking }} - {{ booking.jamSelesaiBooking }}</td>
+              <td class="booked-by">
+                <div class="member">{{ booking.member }}</div>
+                <div class="no-telepon">+{{ booking.noTelepon }}</div>
+              </td>
+              <td class="action-column">
+                <button pButton type="button" icon="pi pi-pencil" class="p-button-rounded" (click)="onEdit(booking.idBooking)"></button>
+                <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="confirmDelete(4, booking.idBooking)"></button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+        <p-paginator [rows]="itemsPerPage" [totalRecords]="totalItems" (onPageChange)="onPageChanged($event)"></p-paginator>
+    </div>
+    <div *ngIf="!allBooking || allBooking.length === 0" style="text-align: center;">
+        <p style="font-size: 20px;">Data Booking belum tersedia.</p>
+    </div>
+    
+    <!-- Dialog for Editing Booking -->
+    <p-dialog header="Edit Booking" [(visible)]="displayEditModal">
+        <div class="p-fluid">
+          <div class="p-field">
+            <label for="namaLapangan">Lapangan</label>
+            <input type="text" pInputText id="namaLapangan" [(ngModel)]="dataBooking.namaLapangan" />
+          </div>
+          <div class="p-field">
+            <label>Tanggal</label>
+            <input type="date" pInputText [(ngModel)]="dataBooking.tanggal" />
+          </div>
+          <div class="p-field">
+            <label>Jam Mulai</label>
+            <input type="time" pInputText [(ngModel)]="dataBooking.jamMulaiBooking" />
+          </div>
+          <div class="p-field">
+            <label>Jam Selesai</label>
+            <input type="time" pInputText [(ngModel)]="dataBooking.jamSelesaiBooking" />
+          </div>
+          
+          
+          <button pButton type="button" label="Save" (click)="saveEdit()"></button>
+          <button pButton type="button" label="Cancel" (click)="displayEditModal=false" class="p-button-secondary"></button>
+        </div>
+      </p-dialog>
+      
+    

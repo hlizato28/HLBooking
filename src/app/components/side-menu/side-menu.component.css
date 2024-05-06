@@ -1,0 +1,45 @@
+/* Styling untuk side menu */
+/* Memastikan seluruh elemen di dalam .side-menu menggunakan warna teks putih */
+.side-menu, .side-menu * {
+  color: white !important; /* Memaksa warna teks putih pada semua elemen */
+}
+
+/* Pengaturan spesifik untuk .side-menu dan elemen di dalamnya */
+.side-menu {
+  width: 200px;
+  height: 100vh;
+  background-color: rgb(27, 25, 25);
+  padding: 0 !important; /* Menghilangkan padding jika ada */
+  margin: 0 !important; /* Menghilangkan margin jika ada */
+  border: none !important; /* Menghilangkan border jika ada */
+}
+
+.side-menu .p-menu {
+  background-color: rgb(27, 25, 25) !important; /* Pastikan background hitam */
+  width: 100% !important; /* Menggunakan 100% lebar dari side-menu */
+  border: none !important;
+}
+
+.p-menu .p-menuitem {
+  width: 100%; /* Pastikan .p-menuitem juga memenuhi lebar */
+}
+
+.side-menu .p-menuitem-link {
+  background-color: rgb(27, 25, 25) !important;
+  width: 100% !important; /* Full width */
+  padding: 21px 10px !important;
+  margin: 0 !important; /* No margin to ensure full width */
+  text-decoration: none;
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+.side-menu .p-menuitem-link:not(.p-disabled):hover,
+.side-menu .p-menuitem-link:not(.p-disabled):focus {
+  background-color: #555 !important; /* Warna hover */
+}
+
+/* Active item styles */
+.side-menu .p-menuitem-active .p-menuitem-link,
+.side-menu .active-menu-item {
+  background-color: #666 !important; /* Warna untuk item aktif */
+}

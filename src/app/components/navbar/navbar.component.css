@@ -1,0 +1,16 @@
+.p-menubar {
+    background-color: rgb(27, 25, 25); 
+    color: white; 
+    border: none; 
+  }
+  
+  .app-title {
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    margin-right: auto; 
+  }
+  
+  .p-button {
+    margin-left: 0.5rem; 
+  }
+  

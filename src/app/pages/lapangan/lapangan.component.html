@@ -1,0 +1,85 @@
+<!-- Add Button with PrimeNG -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div class="search-container">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
+      <input type="text" pInputText placeholder="Search" [(ngModel)]="searchTerm" (keyup)="onSearchInput()">
+    </div>
+  </div>
+  <div class="add-button-container">
+    <button pButton type="button" label="Add Lapangan" icon="pi pi-plus" (click)="showCreateModal()"></button>
+  </div>
+</div>
+  
+  <!-- Dialog for Creating New Lapangan -->
+  <p-dialog header="Create New Lapangan" [(visible)]="displayCreateModal">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="namaLapangan">Nama Lapangan</label>
+        <input type="text" pInputText id="namaLapangan" [(ngModel)]="dataLapangan.namaLapangan" />
+      </div>
+      <div class="p-field">
+        <label>Jam Mulai</label>
+        <input type="time" pInputText [(ngModel)]="dataLapangan.jamMulai" />
+      </div>
+      <div class="p-field">
+        <label>Jam Akhir</label>
+        <input type="time" pInputText [(ngModel)]="dataLapangan.jamSelesai" />
+      </div>
+      <button pButton type="button" label="Save" (click)="createLapangan()"></button>
+      <button pButton type="button" label="Cancel" (click)="displayCreateModal=false" class="p-button-secondary"></button>
+    </div>
+  </p-dialog>
+  
+  
+  <!-- Table with PrimeNG -->
+  <div *ngIf="allLapangan && allLapangan.length > 0">
+      <p-table [value]="allLapangan">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Id</th>
+            <th>Nama Lapangan</th>
+            <th>Jam Operasional</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-lapangan>
+          <tr>
+            <td>{{ lapangan.idLapangan }}</td>
+            <td>{{ lapangan.namaLapangan }}</td>
+            <td>{{ lapangan.jamMulai }} - {{ lapangan.jamSelesai }}</td>
+            <td class="action-column">
+              <button pButton type="button" icon="pi pi-pencil" class="p-button-rounded" (click)="onEdit(lapangan.idLapangan)"></button>
+              <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="confirmDelete(lapangan.idLapangan)"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <p-paginator [rows]="itemsPerPage" [totalRecords]="totalItems" (onPageChange)="onPageChanged($event)"></p-paginator>
+  </div>
+  <div *ngIf="!allLapangan || allLapangan.length === 0" style="text-align: center;">
+      <p style="font-size: 20px;">Data lapangan belum ada.</p>
+  </div>
+  
+  <!-- Dialog for Editing Lapangan -->
+  <p-dialog header="Edit Lapangan" [(visible)]="displayEditModal">
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="namaLapangan">Nama Lapangan</label>
+          <input type="text" pInputText id="namaLapangan" [(ngModel)]="dataLapangan.namaLapangan" />
+        </div>
+        <div class="p-field">
+          <label>Jam Mulai</label>
+          <input type="time" pInputText [(ngModel)]="dataLapangan.jamMulai" />
+        </div>
+        <div class="p-field">
+          <label>Jam Selesai</label>
+          <input type="time" pInputText [(ngModel)]="dataLapangan.jamSelesai" />
+        </div>
+        
+        
+        <button pButton type="button" label="Save" (click)="saveEdit()"></button>
+        <button pButton type="button" label="Cancel" (click)="displayEditModal=false" class="p-button-secondary"></button>
+      </div>
+    </p-dialog>
+    
+  
